@@ -2,50 +2,47 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>My App - King Mamank</title>
     <style>
-        /* Menghilangkan semua spasi bawaan browser */
-        body, html { 
-            margin: 0; 
-            padding: 0; 
-            height: 100%; 
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
             width: 100%;
-            overflow: hidden; /* Mencegah scroll ganda */
-            background-color: #ffffff;
+            overflow: hidden;
+            background: #ffffff;
         }
 
-        /* Membuat iframe memenuhi seluruh layar aplikasi */
-        iframe { 
+        iframe {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%; 
-            height: 100%; 
-            border: none; 
+            inset: 0;
+            width: 100%;
+            height: 100dvh;
+            border: none;
             z-index: 1;
         }
 
-        /* TOMBOL HOME MELAYANG */
         .btn-home {
             position: fixed;
-            top: 25px;
+            top: calc(25px + env(safe-area-inset-top, 0px));
             right: 25px;
-            background: #27ae60;
-            color: white;
             width: 55px;
             height: 55px;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
+            background: #27ae60;
+            color: #fff;
             text-decoration: none;
             font-size: 24px;
+            border: 2px solid #fff;
             box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-            z-index: 9999; /* Pastikan di atas iframe */
-            border: 2px solid white;
+            z-index: 9999;
             transition: transform 0.2s, background 0.2s;
             -webkit-tap-highlight-color: transparent;
+            animation: pulse-green 2s infinite;
         }
 
         .btn-home:active {
@@ -53,22 +50,23 @@
             background: #1e8449;
         }
 
-        /* Efek pulse halus agar tombol terlihat interaktif */
         @keyframes pulse-green {
-            0% { box-shadow: 0 0 0 0 rgba(39, 174, 96, 0.7); }
-            70% { box-shadow: 0 0 0 10px rgba(39, 174, 96, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(39, 174, 96, 0); }
+            0%   { box-shadow: 0 4px 15px rgba(0,0,0,0.4), 0 0 0 0 rgba(39,174,96,0.7); }
+            70%  { box-shadow: 0 4px 15px rgba(0,0,0,0.4), 0 0 0 10px rgba(39,174,96,0); }
+            100% { box-shadow: 0 4px 15px rgba(0,0,0,0.4), 0 0 0 0 rgba(39,174,96,0); }
         }
-        .btn-home {
-            animation: pulse-green 2s infinite;
+
+        @media (prefers-reduced-motion: reduce) {
+            .btn-home { animation: none; }
         }
     </style>
 </head>
 <body>
+    <a href="https://mamank757.github.io/PPL" class="btn-home" title="Kembali ke Dashboard" aria-label="Kembali ke Dashboard">🏠</a>
 
-    <a href="https://mamank757.github.io/PPL" class="btn-home" title="Kembali ke Dashboard">🏠</a>
-
-    <iframe src="https://script.google.com/macros/s/AKfycbzsx9osMY8lU8GKewA3k7z0YBwPkrQB8sk71HaLVdctLzR1qDJIlHHcIbgbm9fpn8uh/exec"></iframe>
-
+    <iframe
+        title="Kalkulator Pupuk"
+        src="https://script.google.com/macros/s/AKfycbzbVjncWe-C18kYWgCJEEvYFEoZlYPsgf2tyw9MCsa_5YosyoxtRuQIjBThZTiEEnFS/exec">
+    </iframe>
 </body>
 </html>
